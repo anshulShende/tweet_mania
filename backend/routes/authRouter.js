@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { login, signup, logout } = require("../controllers/auth");
+const { login, signup, logout } = require("../controllers/authController");
 
 // @Mapping("/auth")
 router.post("/login", login);

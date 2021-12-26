@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
   },
   name: {
     type: String,
-    maxlenght: 32,
+    maxlength: 32,
     required: true,
     trim: true,
   },
@@ -27,17 +27,17 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     require: true,
-    maxlenght: 32,
+    maxlength: 32,
     trim: true,
   },
   bio: {
     type: String,
-    maxlenght: 180,
+    maxlength: 180,
     trim: true,
   },
   joiningDate: {
     type:String,
-    default:Date.now()
+    default: new Date().toISOString().replace('T', " ").slice(0,19),
   },
   followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   follows: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],

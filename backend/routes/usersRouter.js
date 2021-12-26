@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getAllUsers, getSpecificUser, deleteSpecificUser, updateUser} = require("../controllers/users");
+const { getAllUsers, getSpecificUser, deleteSpecificUser, updateUser} = require("../controllers/userController");
 
 // @Mapping("/users")
 router.get("/", getAllUsers)
