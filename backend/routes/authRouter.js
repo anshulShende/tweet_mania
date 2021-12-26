@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const { login, signup } = require("../controllers/auth");
+const { login, signup, logout } = require("../controllers/auth");
 
 // @Mapping("/auth")
 router.post("/login", login);
-router.get("/signup", signup);
+router.post("/signup", signup);
+router.patch("/logout/:id", logout);
 
 
 module.exports = router;

@@ -6,6 +6,6 @@ const { getAllUsers, getSpecificUser, deleteSpecificUser, updateUser} = require(
 router.get("/", getAllUsers)
 router.get("/:username", getSpecificUser);
 router.delete("/:username", deleteSpecificUser)
-router.patch("/:username", updateUser);
+router.patch("/", updateUser);
 
 module.exports = router;

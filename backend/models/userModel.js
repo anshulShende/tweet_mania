@@ -37,7 +37,7 @@ const userSchema = mongoose.Schema({
   },
   joiningDate: {
     type:String,
-    default:date
+    default:Date.now()
   },
   followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   follows: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
