@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const usersRouter = require('./routes/usersRouter');
 const authRouter = require('./routes/authRouter');
+const tweetRouter = require('./routes/tweetRouter');
 
 const app = express();
 
@@ -26,5 +27,6 @@ db.on('error', (err) => {
 
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/tweet', tweetRouter);
 
 module.exports = app;
