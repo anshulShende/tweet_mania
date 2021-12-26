@@ -6,4 +6,6 @@
 - [x] Install Nodemon and Setup package.json
 - [x] Run Backend Application in its Basic Form.
 - [x] Install dotEnv to pass credentails to your server.
-- [x] create .gitignore  file and add node_modules and .env file.
+- [x] Create .gitignore  file and add node_modules and .env file.
+- [x] Setup Mongodb Atlas, Create config folder and add database configuration.
+- [x] Create Folder Structure for Controller, Model and Routes
