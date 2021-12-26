@@ -39,19 +39,13 @@ const userSchema = mongoose.Schema({
     type:String,
     default:date
   },
-  salt: String,
-  followers: {
-    type: Array,
-    default: [],
-  },
-  follows: {
-    type: Array,
-    default: [],
-  },
-  tweets: {
-    type: Array,
-    default: [],
-  },
+  followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  follows: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  isLoggedIn: {
+    type: Boolean,
+    require: true,
+    default: true
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);

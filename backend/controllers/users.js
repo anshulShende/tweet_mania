@@ -36,10 +36,10 @@ const updateUser = (req, res) => {
     { $set: req.body },
     (err) => {
       if (!err) {
-        res.send("Updated successfully");
+        res.statusCode(200).send("User Updated successfully");
       } else {
         if (err.keyPattern.username == 1 || err.keyPattern.email == 1) {
-          res.send(
+          res.statusCode(402).send(
             `Sorry, ${
               err.keyValue.username || err.keyValue.email
             } is taken already`

@@ -5,8 +5,8 @@ const logger = require('morgan');
 const db = require('./config/dbconfig');
 require('dotenv').config();
 
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/usersRouter');
+const authRouter = require('./routes/authRouter');
 
 const app = express();
 
@@ -24,7 +24,7 @@ db.on('error', (err) => {
     console.log(err);
 });
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 module.exports = app;
