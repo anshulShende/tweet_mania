@@ -1,1 +1,3 @@
 ### PROJECT TASK AND STATUS UPDATES CHECKLIST....
+
+- [x] Git repo Setup and First commit
