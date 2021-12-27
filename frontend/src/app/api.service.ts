@@ -9,6 +9,7 @@ export class ApiService {
   private BASE_URL = "http://localhost:5000/";
 
   private LOGIN = this.BASE_URL + "auth/login";
+  private SIGNUP = this.BASE_URL + "auth/signup";
   private POST_NEW_TWEET = this.BASE_URL + "tweet";
   private FETCH_USER_FEED = this.BASE_URL + "feed";
 
@@ -23,6 +24,10 @@ export class ApiService {
       password: password,
     }
     return this.http.post(this.LOGIN, rqBody, this.options);
+  }
+
+  signupUser(rqBody: any){
+    return this.http.post(this.SIGNUP, rqBody, this.options);
   }
 
   postNewTweet(userId: string, tweetContent: any){

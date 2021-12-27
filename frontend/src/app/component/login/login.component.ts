@@ -27,8 +27,9 @@ export class LoginComponent implements OnInit {
     this.APISer.loginUser(this.username, this.password).subscribe(
       (res: any) => {
         if(res.result == "Success"){
-          this.DataSer.set("User", res['user']);
           this.router.navigate(['/home']);
+          this.DataSer.set("User", res['user']);
+          alert(res.message);
         }else {
           this.isErrorToBeShown = true;
           this.error = res.message;

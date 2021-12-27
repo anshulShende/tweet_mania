@@ -8,7 +8,7 @@ const login = async(req, res) => {
     if (user==null || user.length == 0) {
       return res.status(401).json({result:"Error", message: "Either username or password is Incorrect" });
     }
-    res.status(200).json({result:"Success", user: user, message: `${username} Logged in Succeddfully`});
+    res.status(200).json({result:"Success", user: user, message: `Logged in Succeddfully. Welcome Back ${username} `});
   } catch(err){
     res.status(400).json({result:"Error", message: "Error occured.. Try After Sometime...." });
   }
@@ -22,7 +22,6 @@ const signup = (req, res) => {
     .then((user) =>
       res.status(200).json({result: "Success", user: user, message: `User Sign up successfully, Welcome ${user.name}`}))
     .catch((err) => {
-      console.log(err);
       if (err.keyPattern.username == 1 || err.keyPattern.email == 1) {
         res.status(400).json({result: "Error", message: `Sorry, ${err.keyValue.username || err.keyValue.email} already exists`});
       }
