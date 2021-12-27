@@ -119,13 +119,13 @@ const fetchMyfeed = async (req, res) => {
 
     const followings = user.follows;
     if(followings ==null || followings.length == 0){
-      res.status(200).json({ tweets: [], message: "Start following other users to get updates on your feed"});
+      res.status(200).json({result: "Success", tweets: [], message: "Start following other users to get updates on your feed"});
     }
 
     const tweets = await Tweet.find({'userId':  { $in: followings } });
 
     if(tweets==null || tweets.length == 0 ){
-      res.status(200).json({ tweets: [], message: "No Updates Found.. Keep following other users to get updates on your feed"});
+      res.status(200).json({result: "Success", tweets: [], message: "No Updates Found.. Keep following other users to get updates on your feed"});
     }
     
     if(tweets.length > 1){
@@ -138,7 +138,7 @@ const fetchMyfeed = async (req, res) => {
    
     console.log(tweets);
 
-    res.status(200).json({ tweets: tweets, message: `Successfullly fetched Feed for ${user.name}`});
+    res.status(200).json({result: "Success", tweets: tweets, message: `Successfullly fetched Feed for ${user.name}`});
 
   } catch(err) {
     res.status(400).json({ message: `Error Occurred while fetching Feed for ${userId}`});

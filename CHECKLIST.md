@@ -28,3 +28,7 @@
 - [x] Create a navbar component for tweet-mania.
 - [x] Create Home Component.
 - [x] Create Component for SideBar.
+- [x] Create Component to post new tweet.
+- [x] Create Component to fetch Feed.
+- [x] Create Profile Component.
+- [] Create Signup up Component.
