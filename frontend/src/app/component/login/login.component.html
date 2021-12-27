@@ -1,0 +1,36 @@
+
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login()">
+        <div class="row">
+            <div class="text-center">
+                <h3>Log in to Tweet-Mania</h3>
+            </div>
+        </div>
+        <div class='div-3'>
+          <div class='sub-div-3'>
+            <label>Username</label><br>
+            <input id="username" type='text' name="username" [(ngModel)]="username" maxlength="32" [required]="true">
+          </div>
+        </div>
+        <div class='div-4'>
+          <div class='sub-div-4'>
+            <label>Password</label><br>
+            <input id="password" type='password' name="password" [(ngModel)]="password" [required]="true">
+          </div>
+        </div>
+        <div class='div-5'>
+          <div class='sub-div-5'>
+            <button>Log in</button>
+          </div>
+        </div>
+        <div class='div-6'>
+          <div class='sub-div-6'>
+            <a href='#'>Forgot password?&nbsp; &nbsp; &nbsp;</a>
+            <a href=''>Sign up for Tweet-Mania</a>
+          </div>
+        </div>
+    </form>
+   
+  </div>

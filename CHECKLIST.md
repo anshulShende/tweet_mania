@@ -23,3 +23,6 @@
 - [x] create API to fetch feed.
 - [x] Test all 13 api's created above in postman.
 - [x] Setup Angular workspace in frontend folder.
+- [x] Add Bootstrap 4 and Jquery using angular.json method.
+- [x] Create Login Component with username, password fields and login button.
+- [x] Create a navbar component for tweet-mania.

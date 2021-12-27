@@ -6,12 +6,12 @@ const login = async(req, res) => {
   try{
     let user = await User.findOneAndUpdate({ username: username, password: password }, { isLoggedIn: true },{new: true});
     if (user==null || user.length == 0) {
-      res.status(401).json({ message: "either username or password is wrong" });
+      res.status(401).json({result:"Error", message: "either username or password is wrong" });
     }
     console.log(user);
-    res.status(200).json({user: user, message: `${username} Logged in Succeddfully`});
+    res.status(200).json({result:"Success", user: user, message: `${username} Logged in Succeddfully`});
   } catch(err){
-    res.status(400).json({ message: "Error occured.. Try After Sometime...." });
+    res.status(400).json({result:"Error", message: "Error occured.. Try After Sometime...." });
   }
 } 
 
