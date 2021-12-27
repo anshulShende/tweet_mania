@@ -12,6 +12,8 @@ import { DataService } from 'src/app/data-service.service';
 export class LoginComponent implements OnInit {
   username: string = "";
   password: string = "";
+  isErrorToBeShown: boolean = false;
+  error: string = "";
 
   @ViewChild("loginForm", { static: false }) loginForm!: NgForm;
   constructor(private DataSer: DataService, private APISer: ApiService, private router: Router) { }
@@ -21,22 +23,37 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.error = "";
     this.APISer.loginUser(this.username, this.password).subscribe(
       (res: any) => {
         if(res.result == "Success"){
           this.DataSer.set("User", res['user']);
-          console.log(res['user']);
           this.router.navigate(['/home']);
         }else {
-          console.log(res);
+          this.isErrorToBeShown = true;
+          this.error = res.message;
+          this.hideError();
         }
       }, 
       (err) => {
-        console.log(err);
+        if(err.error.result == "Error"){
+          this.isErrorToBeShown = true;
+          this.error = err.error.message;
+        } else{
+          this.isErrorToBeShown = true;
+          this.error = "Error Occurred.. Please try after some time";
+        }
+        this.hideError();
       }
     );
-    console.log(this.DataSer.getData());
   }
   
+
+  hideError(){
+    setTimeout(()=>{
+      this.isErrorToBeShown = false;
+      this.error = "";
+    },3000);
+  }
 
 }
