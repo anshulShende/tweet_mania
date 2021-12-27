@@ -35,6 +35,9 @@ const userSchema = mongoose.Schema({
     maxlength: 180,
     trim: true,
   },
+  profileImage: {
+    type: String,
+  },
   joiningDate: {
     type:String,
     default: new Date().toISOString().replace('T', " ").slice(0,19),

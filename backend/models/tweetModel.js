@@ -6,6 +6,18 @@ const TweetModel = mongoose.Schema({
     ref: 'User',
     require: true
   },
+  name: {
+    type: String,
+    maxlength: 32,
+    required: true,
+    trim: true,
+  },
+  username:{
+    type: String,
+    maxlenght: 32,
+    required: true,
+    trim: true,
+  },
   tweetContent: {
     type: String,
     require: true,

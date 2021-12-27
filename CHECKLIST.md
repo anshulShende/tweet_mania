@@ -25,10 +25,12 @@
 - [x] Setup Angular workspace in frontend folder.
 - [x] Add Bootstrap 4 and Jquery using angular.json method.
 - [x] Create Login Component with username, password fields and login button.
+- [x] Integrated Login API with validations
 - [x] Create a navbar component for tweet-mania.
 - [x] Create Home Component.
 - [x] Create Component for SideBar.
 - [x] Create Component to post new tweet.
 - [x] Create Component to fetch Feed.
 - [x] Create Profile Component.
-- [] Create Signup up Component.
+- [x] Create Signup up Component.
+- [x] Integrated Signup API with proper validations.
