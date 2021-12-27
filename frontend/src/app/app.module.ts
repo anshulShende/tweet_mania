@@ -8,19 +8,25 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { SignupComponent } from './component/signup/signup.component';
+import { HomeComponent } from './component/home/home.component';
+import { SideBarComponent } from './component/side-bar/side-bar.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    SignupComponent
+    SignupComponent,
+    HomeComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

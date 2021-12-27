@@ -1,0 +1,21 @@
+<div class="sidebar">
+    <div class="sidebarOption active" (click)="loadPage('index')">
+      <span class="material-icons"> home </span>
+      <h5>Home</h5>
+    </div>
+
+    <div class="sidebarOption" (click)="loadPage('explore')">
+      <span class="material-icons"> tag </span>
+      <h5>Explore</h5>
+    </div>
+
+    <div class="sidebarOption" (click)="loadPage('profile')">
+      <span class="material-icons"> perm_identity </span>
+      <h5>Profile</h5>
+    </div>
+
+    <div class="sidebarOption" (click)="logout()">
+      <span class="material-icons"> power_settings_new </span>
+      <h5>Logout</h5>
+    </div>
+  </div>
