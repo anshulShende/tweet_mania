@@ -1,0 +1,251 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Tweet-Mania",
+		"_postman_id": "ec76402c-fe50-28d7-ee6e-6aea38d6aeea",
+		"description": "Backend APIs for tweet-mania... A twitter clone for sarcastic tweets, updates, memes and more...",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5000/users",
+					"request": {
+						"url": "http://localhost:5000/users",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Fetch All Users"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/users/rocky4542",
+					"request": {
+						"url": "http://localhost:5000/users/rocky4542",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Delete a User"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5000/auth/signup",
+					"request": {
+						"url": "http://localhost:5000/auth/signup",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"nitinWK\",\n\t\"name\": \"Nitin Walke\",\n\t\"email\": \"nitinWK@gmail.com\",\n\t\"password\": \"nitinrocks\",\n\t\"bio\": \"Hey There! I am Nitin.. Nitin Walke\"\n}"
+						},
+						"description": "User Signup"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/auth/login",
+					"request": {
+						"url": "http://localhost:5000/auth/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"rocky454\",\n\t\"password\": \"rockyrocks2\"\n}"
+						},
+						"description": "Login user"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/auth/logout/61c894fe4193cfcb052a31ba",
+					"request": {
+						"url": "http://localhost:5000/auth/logout/61c894fe4193cfcb052a31ba",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "username",
+								"value": "rocky454",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Log out User"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tweet",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5000/tweet",
+					"request": {
+						"url": "http://localhost:5000/tweet",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": \"61c8c4b4d39dadcd76dbc63f\",\n\t\"tweetContent\": \"Jab tak humari Maldives ki baari ayegi tab tak Maldives doob jayega. #vacation\"\n}"
+						},
+						"description": "Posting a new tweet"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/tweet/61c8bb241242d9ffa643cb01",
+					"request": {
+						"url": "http://localhost:5000/tweet/fetchByUserId/61c8c4b4d39dadcd76dbc63f",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Fetch Specific Tweet"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/tweet/61c8c550d39dadcd76dbc643",
+					"request": {
+						"url": "http://localhost:5000/tweet/61c8c550d39dadcd76dbc643",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get tweet By Specific Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feed",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5000/feed/like",
+					"request": {
+						"url": "http://localhost:5000/feed/like",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tweetId\": \"61c8caceb2777ff4e271ed49\",\n\t\"userId\": \"61c8b7815c04c9ec154037ca\"\n}"
+						},
+						"description": "Likes and Unlike a tweet"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/feed/retweet",
+					"request": {
+						"url": "http://localhost:5000/feed/retweet",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tweetId\": \"61c8caceb2777ff4e271ed49\",\n\t\"userId\": \"61c8b7815c04c9ec154037ca\"\n}"
+						},
+						"description": "Retweets"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/feed/follow",
+					"request": {
+						"url": "http://localhost:5000/feed/follow",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"myUserId\": \"61c8b7815c04c9ec154037ca\",\n\t\"followUserId\": \"61c8c4b4d39dadcd76dbc63f\"\n}"
+						},
+						"description": "Follow another user"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/feed/unfollow",
+					"request": {
+						"url": "http://localhost:5000/feed/unfollow",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"myUserId\": \"61c8b7815c04c9ec154037ca\",\n\t\"unfollowUserId\": \"61c8c4b4d39dadcd76dbc63f\"\n}"
+						},
+						"description": "Unfollow a user"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/feed/61c8b7815c04c9ec154037ca",
+					"request": {
+						"url": "http://localhost:5000/feed/61c8b7815c04c9ec154037ca",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Fetch my feed"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
