@@ -17,3 +17,8 @@
 - [x] Create Schema and Model for Tweets.
 - [x] Create Router For Tweets (Crud Options).
 - [x] Create Controller for Tweets Routes.
+- [x] Create Feed Routes and Controllwers.
+- [x] create API for likes and unlike.
+- [x] create API for retweeting and tweeting.
+- [x] create API to fetch feed.
+- [x] Test all 13 api's created above in postman.
