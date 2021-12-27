@@ -1,0 +1,27 @@
+<ng-container *ngFor="let tweet of tweets">
+    <div class="tweet-container">
+        <img src="{{ tweet.profileImage }}" class="profile-image" />
+        <div class="content-container">
+          <header>
+            <span class="name">{{ tweet.name }}</span>
+            <span>@{{ tweet.userName }}</span>
+            <span>·</span>
+            <span>{{ tweet.postAge }}h</span>
+            <span class="material-icons"> keyboard_arrow_down </span>
+            
+          </header>
+          <main>
+            <div>{{ tweet.message }}</div>
+          </main>
+          <footer>
+            
+            <span > <i class="fas fa-heart"></i> </span>
+            <span > <i class="far fa-comment"></i> </span>
+            <span > <i class="fas fa-retweet"></i> </span>
+            <span > <i class="fas fa-external-link-square-alt"></i> </span>
+            
+            
+          </footer>
+        </div>
+      </div>  
+</ng-container>

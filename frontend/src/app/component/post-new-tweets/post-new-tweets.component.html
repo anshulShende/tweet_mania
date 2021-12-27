@@ -1,0 +1,38 @@
+<div class="flex-container" *ngIf="showtweetDiv">
+
+    <img src="{{ avatarImage }}" />
+  
+    <article>
+      <div class="input" placeholder="What's happening?" id="tweetContent" contenteditable="true"></div>
+      <div class="everyone-can-reply-wrapper">
+        <div class="everyone-can-reply-container">
+          <div class="earth-icon-container">
+            <span class="material-icons"> public </span>
+          </div>
+          <span>Everyone can reply</span>
+        </div>
+      </div>
+  
+      <footer>
+        <div class="icon-container">
+          <span class="material-icons"> insert_photo </span>
+        </div>
+        <div class="icon-container">
+          <span class="material-icons"> movie </span>
+        </div>
+        <div class="icon-container">
+          <span class="material-icons"> insert_chart </span>
+        </div>
+        <div class="icon-container">
+          <span class="material-icons"> sentiment_satisfied_alt </span>
+        </div>
+        <div class="icon-container">
+          <span class="material-icons"> event_note </span>
+        </div>
+        <div class="icon-container">
+        </div>
+        <button (click)="postNewTweet()">Tweet</button>
+      </footer>
+  
+    </article>
+  </div>

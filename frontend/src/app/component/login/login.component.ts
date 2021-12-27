@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
     this.APISer.loginUser(this.username, this.password).subscribe(
       (res: any) => {
         if(res.result == "Success"){
-          this.DataSer.set("User", res['User']);
+          this.DataSer.set("User", res['user']);
+          console.log(res['user']);
           this.router.navigate(['/home']);
         }else {
           console.log(res);
@@ -33,7 +34,9 @@ export class LoginComponent implements OnInit {
       (err) => {
         console.log(err);
       }
-    )
+    );
+    console.log(this.DataSer.getData());
   }
+  
 
 }

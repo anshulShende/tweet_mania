@@ -9,6 +9,7 @@ export class ApiService {
   private BASE_URL = "http://localhost:5000/";
 
   private LOGIN = this.BASE_URL + "auth/login";
+  private POST_NEW_TWEET = this.BASE_URL + "tweet";
 
   headers = new HttpHeaders({'Content-Type': 'application/json' });
   options = { headers: this.headers }
@@ -21,5 +22,13 @@ export class ApiService {
       password: password,
     }
     return this.http.post(this.LOGIN, rqBody, this.options);
+  }
+
+  postNewTweet(userId: string, tweetContent: any){
+    let rqBody = {
+      userId: userId,
+      tweetContent: tweetContent,
+    }
+    return this.http.post(this.POST_NEW_TWEET, rqBody, this.options);
   }
 }

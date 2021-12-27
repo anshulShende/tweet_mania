@@ -1,6 +1,7 @@
 .home-container {
     display: flex;
     margin-top: -60px;
+    max-width: 60%;
 }
 
 .left-side-container {

@@ -6,8 +6,8 @@ const postNewtweet = (req, res) => {
   console.log(newtweet);
   newtweet
     .save()
-    .then((tweet) => res.status(200).json({tweet: tweet, message: "Tweet Posted Successfully"}))
-    .catch((err) => res.status(400).json({message: "Error occured while posting a Tweet. Please try again after sometime"}));
+    .then((tweet) => res.status(200).json({result: "Success", tweet: tweet, message: "Tweet Posted Successfully"}))
+    .catch((err) => res.status(400).json({result: "Error", message: "Error occured while posting a Tweet. Please try again after sometime"}));
 };
 
 const getSpecificTweet = (req, res)=>{

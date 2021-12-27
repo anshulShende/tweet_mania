@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     --tweet-mania-color: #1976d2;
-    --tweet-mania-background: #dee9f0;
+    --tweet-mania-background: #d5e2eb;
+    --primary-text-color: #222527;
+    --background-color: white;
+    --background-color-hover: #d5e2eb;
+    --border-color: #d5e2eb;
   }

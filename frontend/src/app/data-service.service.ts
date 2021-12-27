@@ -7,10 +7,16 @@ export class DataService {
 
   constructor() { }
 
-  private data: any;
+  private data: any = {};
 
   initializeSingleton(){
-    this.data = {};
+    this.data = {
+      User: {},
+    };
+  }
+
+  getData(){
+    return this.data;
   }
 
   get(propname: any){

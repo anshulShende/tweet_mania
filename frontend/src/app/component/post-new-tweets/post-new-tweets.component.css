@@ -1,0 +1,139 @@
+.flex-container {
+    display: flex;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 10px solid;
+    border-color: var(--border-color);
+    padding: 10px 15px 0px;
+}
+  
+img {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+  
+img:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+  
+article {
+    width: 100%;
+    max-width: 475px;
+}
+  
+.input {
+    margin-top: 13px;
+    margin-bottom: 17px;
+    background: none;
+    border: none;
+    font-size: 19px;
+    color: var(--primary-text-color);
+    caret-color: var(--primary-text-color);
+}
+  
+.input:focus {
+    outline: none;
+}
+
+.input:hover {
+    cursor: text;
+}
+  
+.input[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: var(--primary-text-color);
+}
+  
+.input:focus + .everyone-can-reply-wrapper {
+    display: flex;
+}
+  
+.everyone-can-reply-wrapper {
+    display: none;
+    align-items: center;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+  
+.everyone-can-reply-container {
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--tweet-mania-color);
+    transition: background 0.2s;
+    border-radius: 9999px;
+    padding: 5px 10px 0px 5px;
+}
+  
+.everyone-can-reply-container:hover {
+    cursor: pointer;
+    background-color: var(--background-color-hover);
+}
+  
+  .earth-icon-container {
+    padding-right: 3px;
+  }
+  
+  .earth-icon-container > .material-icons {
+    position: relative;
+    bottom: 1px;
+    font-size: 18px;
+  }
+  
+  footer {
+    display: flex;
+    align-items: center;
+    height: 49px;
+    margin: 5px -8px;
+  }
+  
+  footer > .icon-container {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    transition: background 0.2s;
+    border-radius: 9999px;
+  }
+  
+  footer > .icon-container:hover {
+    cursor: pointer;
+    background-color: var(--background-color-hover);
+  }
+  
+  footer > .icon-container .material-icons {
+    color: var(--tweet-mania-color);
+    font-weight: 100;
+  }
+  
+  footer > button {
+    margin-left: auto;
+    width: 74px;
+    height: 39px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    background-color: var(--tweet-mania-color);
+    transition: background 0.8s;
+  }
+  
+  footer > button:focus,
+  footer > button:hover {
+    cursor: pointer;
+    background-color: var(--tweet-mania-color);
+    outline: none;
+  }
+  
+  /* Hide these icons if width is less than this */
+  @media (max-width: 705px) {
+    footer :nth-child(3),
+    footer :nth-child(5) {
+      display: none;
+    }
+  }
+  
