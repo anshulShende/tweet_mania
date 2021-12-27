@@ -10,7 +10,7 @@ declare const $: any;
   styleUrls: ['./post-new-tweets.component.css']
 })
 export class PostNewTweetsComponent implements OnInit {
-  avatarImage: string = '../../assets/images/jm-avatar.jpg';
+  avatarImage: string = '../../assets/images/Rushi.png';
   user: any = {};
   showtweetDiv: boolean = true;
   
