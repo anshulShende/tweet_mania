@@ -22,3 +22,4 @@
 - [x] create API for retweeting and tweeting.
 - [x] create API to fetch feed.
 - [x] Test all 13 api's created above in postman.
+- [x] Setup Angular workspace in frontend folder.
