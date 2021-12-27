@@ -26,3 +26,5 @@
 - [x] Add Bootstrap 4 and Jquery using angular.json method.
 - [x] Create Login Component with username, password fields and login button.
 - [x] Create a navbar component for tweet-mania.
+- [x] Create Home Component.
+- [x] Create Component for SideBar.
