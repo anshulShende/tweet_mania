@@ -15,6 +15,7 @@ import { PostNewTweetsComponent } from './component/post-new-tweets/post-new-twe
 import { FeedsComponent } from './component/feeds/feeds.component';
 import { HomeChildComponent } from './component/home-child/home-child.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { FollowComponent } from './component/follow/follow.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProfileComponent } from './component/profile/profile.component';
     PostNewTweetsComponent,
     FeedsComponent,
     HomeChildComponent,
-    ProfileComponent
+    ProfileComponent,
+    FollowComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <form #signupForm="ngForm" (ngSubmit)="signupForm.valid && signup()">
+    <form #signupForm="ngForm" (ngSubmit)="signup()">
         <div class="row">
             <div class="form-group text-center">
                 <h3>Sign In to Tweet-Mania</h3>
@@ -14,7 +14,7 @@
                 class="form-control"
                 id="name"
                 name="name"
-                placeholder="name"
+                placeholder="name *"
                 [(ngModel)]="name"
                 maxlength="32"
                 [required]="true"
@@ -26,7 +26,7 @@
               class="form-control"
               id="username"
               name="username"
-              placeholder="Username"
+              placeholder="Username *"
               [(ngModel)]="username"
               maxlength="32"
               [required]="true"
@@ -38,9 +38,9 @@
               <input
                 id="email"
                 name="email"
-                type="email" 
+                type="text" 
                 class="form-control" 
-                placeholder="email"
+                placeholder="email *"
                 [(ngModel)]="email" 
                 [required]="true"
               />
@@ -49,11 +49,10 @@
                 <input
                   id="bio"
                   name="bio"
-                  type="bio" 
+                  type="text" 
                   class="form-control" 
                   placeholder="bio"
                   [(ngModel)]="bio" 
-                  [required]="bio"
                   maxlength="180"
                 />
               </div>
@@ -65,7 +64,7 @@
               name="password"
               type="password" 
               class="form-control" 
-              placeholder="Password"
+              placeholder="Password *"
               [(ngModel)]="password" 
               [required]="true"
             />
@@ -74,24 +73,24 @@
             <input
               id="cpassword"
               name="cpassword"
-              type="cpassword" 
+              type="password" 
               class="form-control" 
-              placeholder="Confirm Password"
+              placeholder="Confirm Password *"
               [(ngModel)]="cpassword" 
               [required]="true"
             />
           </div>
         </div>
-        <div class='form-row'>
+        <div class='row'>
           <div class="form-group col-12 offset-md-2 col-md-8">
             <button type="submit" class="btn btn-theme w-100">Sign Up</button>
           </div>
         </div>
-        <ng-container class="row" *ngIf="isErrorToBeShown">
+        <div class="row mt-2" *ngIf="isErrorToBeShown">
           <div class="form-group col-12 offset-md-2 col-md-8 alert alert-danger"  role="alert">
               {{ error }}
           </div>
-        </ng-container>
+        </div>
         <div class='row'>
           <div class='form-group text-center col-12 offset-md-2 col-md-8'>
             <a href='#' [routerLink]="['/login']">Already a registered User</a>

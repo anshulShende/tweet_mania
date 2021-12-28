@@ -1,0 +1,26 @@
+h6 {
+    border-collapse: separate;
+    border-spacing: 16px 0;
+    border-spacing: 1rem 0;
+    color: var(--tweet-mania-color);
+    display: table;
+    font-size: 1.2em;
+    line-height: .10;
+    margin: 1em 0 .5em;
+    table-layout: auto;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  h6:before,h6:after {
+    border-top: 3px double #123;
+    content: '';
+    display: table-cell;
+    width: 50%;
+  }
+
+  h6:before,h6:after {
+    border-top-color: var(--tweet-mania-color);
+    border-top-style: ridge;
+  }

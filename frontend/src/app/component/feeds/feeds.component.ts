@@ -11,6 +11,8 @@ import { DataService } from 'src/app/data-service.service';
 export class FeedsComponent implements OnInit {
   tweets: any = [];
   user: any = {};
+  isMessageTobeShown: boolean = false;
+  message: string = "";
 
   constructor(private DataSer: DataService, private APISer: ApiService) {
     this.tweets = [];
@@ -26,27 +28,29 @@ export class FeedsComponent implements OnInit {
       (res: any) =>{
         if(res.result == "Success"){
           if(res.tweets.length == 0){
-            console.log("Follow Users to get Feed");
+            this.isMessageTobeShown = true;
+            this.message = res.message;
             return;
           }
           res.tweets.forEach((element: any) => {
             this.tweets.push({
-                name: "Nitin Walke",
-                userName: element.userId,
+                name: element.name,
+                userName: element.username,
                 createdAt: element.createdAt,
-                profileImage: '../../assets/images/Aryan.png',
+                profileImage: `../../assets/images/${element.profileImage}`,
                 message:element.tweetContent,
                 likes: element.likes.length,
                 retweets: element.retweet.length,
             });
+            console.log(`../../assets/images/${element.profileImage}`);
           });
           
         }else {
-          console.log(res);
+          alert(res.message);
         }
       }, 
       (err) => {
-        console.log(err);
+        alert(err.error.message);
       }
     )
   }

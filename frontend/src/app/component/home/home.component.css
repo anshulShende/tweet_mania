@@ -1,7 +1,7 @@
 .home-container {
     display: flex;
     margin-top: -60px;
-    max-width: 60%;
+    max-width: 80%;
 }
 
 .left-side-container {
@@ -14,5 +14,38 @@
     position: relative;
     margin-right: 10px;
     margin-top: 20px;
-    width: 90%;
+    max-width: 80%;
+    min-width: 50%;
 }
+
+.right-side-container {
+    position: sticky;
+    top: 0;
+    width: 500px;
+    height: 100vh;
+    overflow: scroll;
+    scrollbar-width: none;
+    margin-top: -30px;
+  }
+  
+  .right-side-container::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  @media (max-width: 1000px) {
+    .left-side-container {
+      margin-left: 40px;
+    }
+  }
+  
+  @media (max-width: 1022px) {
+    .left-side-container {
+      margin-right: 30px;
+    }
+  }
+  
+  @media (max-width: 1095px) {
+    .right-side-container {
+      display: none;
+    }
+  }

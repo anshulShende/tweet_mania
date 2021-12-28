@@ -19,10 +19,14 @@ export class SignupComponent implements OnInit {
   isErrorToBeShown: boolean = false;
   error: string = "";
 
+  imageArray: string[] = ["Aryan.png", "Hetvi.png", "Kashyap.png", "Poojan.png", "Rushi.png", "Saheel.png", "Yash.png"];
+
   @ViewChild("signupForm", { static: false }) signupForm!: NgForm;
   constructor(private DataSer: DataService, private APISer: ApiService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.DataSer.initializeSingleton();
+  }
 
   validate(){
     if(!this.name || this.name == "" || this.name.length > 32 || !this.username || this.username == "" || this.username.length > 32 || 
@@ -33,7 +37,19 @@ export class SignupComponent implements OnInit {
     }
     return true;
   }
+
+  fetchImageName(){
+    let min = 1
+    let max = 8
+    let random = Math.floor(Math.random() * (max - min) + min); 
+    return this.imageArray[random];
+  }
+
   async signup(){
+    if(!this.signupForm.valid){
+      alert("Empty or Incorrect Details");
+      return;
+    }
     if(!this.validate()){
       return;
     }
@@ -41,6 +57,7 @@ export class SignupComponent implements OnInit {
       this.isErrorToBeShown = true;
       this.error = "Password and Confirm Password does not match";
       this.hideError();
+      return;
     }
     let rqBody = {
         username: this.username,
@@ -48,11 +65,15 @@ export class SignupComponent implements OnInit {
         email: this.email,
         password: this.password,
         bio: (this.bio) ? this.bio : "",
+        profileImage: await this.fetchImageName(),
     }
     this.APISer.signupUser(rqBody).subscribe(
       (res: any) => {
         if(res.result == "Success"){
-          this.router.navigate(['/login']);
+          this.DataSer.set("User", res['user']);
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          },500);
           alert(res.message);
         }else {
           this.isErrorToBeShown = true;
