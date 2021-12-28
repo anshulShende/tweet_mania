@@ -2,14 +2,14 @@
     <div class="who-to-follow-title">
       <div>Follow Similar Users</div>
     </div>
-  
-    <ng-container *ngFor="let u of users; let index=index">
+
+    <ng-container *ngFor="let user of users; let index=index">
         <div class="container">
         <div class="flex">
-            <img src="../../assets/images/Aryan.png" alt="" />
+            <img src="../../assets/images/{{ user.profileImage }}" alt="" />
             <div>
-            <span class="name">{{ u.name }} </span>
-            <span class="username">@{{ u.username }}</span>
+            <span class="name">{{ user.name }} </span>
+            <span class="username">@{{ user.username }}</span>
             </div>
             <div class="button-container">
             <button (click)="followUser(index)">Follow</button>

@@ -12,6 +12,8 @@ export class ApiService {
   private SIGNUP = this.BASE_URL + "auth/signup";
   private POST_NEW_TWEET = this.BASE_URL + "tweet";
   private FETCH_USER_FEED = this.BASE_URL + "feed";
+  private SEARCH_FOLLOWERS = this.BASE_URL + "feed/searchFollowers";
+  private LOGOUT = this.BASE_URL + "auth/logout";
 
   headers = new HttpHeaders({'Content-Type': 'application/json' });
   options = { headers: this.headers }
@@ -40,5 +42,13 @@ export class ApiService {
 
   fetchUserFeed(userId: string){
     return this.http.get(`${this.FETCH_USER_FEED}/${userId}`);
+  }
+
+  fetchPotentialFollowers(userId: string){
+    return this.http.get(`${this.SEARCH_FOLLOWERS}/${userId}`);
+  }
+
+  logout(userId: string){
+    return this.http.patch(`${this.LOGOUT}/${userId}`, null);
   }
 }

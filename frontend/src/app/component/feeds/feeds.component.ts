@@ -1,4 +1,3 @@
-import { ElementSchemaRegistry } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { DataService } from 'src/app/data-service.service';
@@ -42,7 +41,6 @@ export class FeedsComponent implements OnInit {
                 likes: element.likes.length,
                 retweets: element.retweet.length,
             });
-            console.log(`../../assets/images/${element.userId.profileImage}`);
           });
           
         }else {
