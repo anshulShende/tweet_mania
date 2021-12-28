@@ -34,15 +34,15 @@ export class FeedsComponent implements OnInit {
           }
           res.tweets.forEach((element: any) => {
             this.tweets.push({
-                name: element.name,
-                userName: element.username,
+                name: element.userId.name,
+                userName: element.userId.username,
                 createdAt: element.createdAt,
-                profileImage: `../../assets/images/${element.profileImage}`,
+                profileImage: `../../assets/images/${element.userId.profileImage}`,
                 message:element.tweetContent,
                 likes: element.likes.length,
                 retweets: element.retweet.length,
             });
-            console.log(`../../assets/images/${element.profileImage}`);
+            console.log(`../../assets/images/${element.userId.profileImage}`);
           });
           
         }else {

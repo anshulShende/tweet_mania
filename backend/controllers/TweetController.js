@@ -29,12 +29,12 @@ const updateTweet = (req, res) => {
 const fetchAlltweetsBySpecificUser = (req,res) => {
   Tweet.find({userId: req.params.userId}, (err, tweets) => {
     if(err){
-      res.status(400).json({message: "Error Occurred. Please Try Again"});
+      return res.status(400).json({message: "Error Occurred. Please Try Again"});
     } else{
       if(tweets==null || tweets.length == 0){
-        res.status(200).json({message: `No Tweets were posted by ${req.param.userId}` });
+        return res.status(200).json({message: `No Tweets were posted by ${req.param.userId}` });
       }else {
-        res.status(200).json({tweets: tweets, message: "Tweets fectched successfully" });
+        return res.status(200).json({tweets: tweets, message: "Tweets fectched successfully" });
       }
     }
   });

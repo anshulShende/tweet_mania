@@ -108,13 +108,12 @@ const fetchMyfeed = async (req, res) => {
 
   try{
     const user = await User.findById(userId);
-    console.log(user);
     if(!user || user == null || user.length == 0){
-      return res.status(400).json({ message: 'User does not exist' });
+      return res.status(400).json({result: "Error", message: 'User does not exist' });
     }
 
     if(!user.isLoggedIn){
-      return res.status(401).json({message: "Please Login to fetch your feed and updates"});
+      return res.status(401).json({result: "Error", message: "Please Login to fetch your feed and updates"});
     }
 
     const followings = user.follows;
@@ -122,8 +121,7 @@ const fetchMyfeed = async (req, res) => {
       return res.status(200).json({result: "Success", tweets: [], message: "Start following other users to get updates on your feed"});
     }
 
-    const tweets = await Tweet.find({'userId':  { $in: followings } });
-
+    const tweets = await Tweet.find({'userId':  { $in: followings } }).populate('userId').exec();
     if(tweets==null || tweets.length == 0 ){
       return res.status(200).json({result: "Success", tweets: [], message: "No Updates Found.. Keep following other users to get updates on your feed"});
     }
@@ -135,15 +133,31 @@ const fetchMyfeed = async (req, res) => {
           return cb-ca;
         });
     }
-   
-    console.log(tweets);
 
     return res.status(200).json({result: "Success", tweets: tweets, message: `Successfullly fetched Feed for ${user.name}`});
-
   } catch(err) {
-    return res.status(400).json({ message: `Error Occurred while fetching Feed for ${userId}`});
+    return res.status(400).json({result: "Error", message: `Error Occurred while fetching Feed for ${userId}`});
   }
 
 }
 
-module.exports = { toggleLikeforSpecificTweet, toggleRetweetforSpecificTweet, followUser, unfollowUser, fetchMyfeed };
+const findPotentialFollowers = async(req,res) => {
+  console.log(req.params.userId);
+  userId = req.params.userId;
+
+  const user = await User.findById(userId);
+
+  if (!user || user == null || user.length == 0) {
+    return res.status(400).json({result: "Error", message: 'User does not exist' });
+  }
+  user.follows.push(user._id);
+  try{
+    const potentialFollowers = await User.find({ '_id': { "$nin": user.follows }});
+    return res.status(200).json({result: "Success", users: potentialFollowers, message: 'Potential followers fetched successfully' });
+  } catch(err){
+    return res.status(400).json({result: "Error", message: 'Error Occurred.. Please try Again later' }); 
+  }
+  
+}
+
+module.exports = { toggleLikeforSpecificTweet, toggleRetweetforSpecificTweet, followUser, unfollowUser, fetchMyfeed, findPotentialFollowers };

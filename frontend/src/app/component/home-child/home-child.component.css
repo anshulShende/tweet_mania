@@ -4,7 +4,7 @@ h6 {
     border-spacing: 1rem 0;
     color: var(--tweet-mania-color);
     display: table;
-    font-size: 1.2em;
+    font-size: 0.9em;
     line-height: .10;
     margin: 1em 0 .5em;
     table-layout: auto;
@@ -14,7 +14,7 @@ h6 {
   }
 
   h6:before,h6:after {
-    border-top: 3px double #123;
+    border-top: 2px double #123;
     content: '';
     display: table-cell;
     width: 50%;
