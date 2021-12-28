@@ -3,6 +3,26 @@
       <div>Follow Similar Users</div>
     </div>
 
+    <ng-container *ngIf="isErrorToBeShown">
+      <div class="container">
+      <div class="flex">
+          <div>
+            <span class="name">{{ error}} </span>
+          </div>
+      </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="users.length == 0">
+      <div class="container">
+      <div class="flex">
+          <div>
+            <span class="name">No More users to follow</span>
+          </div>
+      </div>
+      </div>
+    </ng-container>
+
     <ng-container *ngFor="let user of users; let index=index">
         <div class="container">
         <div class="flex">

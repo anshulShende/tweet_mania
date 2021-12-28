@@ -10,7 +10,6 @@ declare const $: any;
   styleUrls: ['./post-new-tweets.component.css']
 })
 export class PostNewTweetsComponent implements OnInit {
-  avatarImage: string = '../../assets/images/Rushi.png';
   user: any = {};
   showtweetDiv: boolean = true;
   
@@ -28,16 +27,20 @@ export class PostNewTweetsComponent implements OnInit {
       this.APISer.postNewTweet(this.user['_id'], tweetContent).subscribe(
         (res: any) => {
           if(res.result == "Success"){
-            console.log("Tweet Posted Successfully");
+            alert(res.message);
             this.showtweetDiv = false;
             setTimeout(() => {
               this.showtweetDiv = true;
             }, 10);
           }else {
-            console.log(res);
+            alert(res.message);
           }
         }, (err) => {
-          console.log(err);
+          if(err.error.result == "Error"){
+            alert(err.error.message);
+          } else{
+            alert("Error Occurred.. Please try after some time");
+          }
         }
       )
     }

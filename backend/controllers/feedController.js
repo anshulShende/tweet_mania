@@ -8,7 +8,7 @@ const toggleLikeforSpecificTweet = async (req, res) => {
       const tweet = await Tweet.findById(req.body.tweetId);
       console.log(tweet);
       if (tweet==null || tweet.length == 0) {
-        return res.status(400).json({ message: 'Tweet does not exist' });
+        return res.status(400).json({result: "Error", message: 'Tweet does not exist' });
       }
       const liked = tweet.likes.indexOf(req.body.userId);
       console.log(liked);
@@ -20,9 +20,9 @@ const toggleLikeforSpecificTweet = async (req, res) => {
       }
 
       await tweet.save();
-      return res.status(200).json({message: "Likes for tweet updated successfully", likes: tweet.likes.length});
+      return res.status(200).json({result: "Success", message: "Likes for tweet updated successfully", likes: tweet.likes.length});
     } catch (err) {
-        return res.status(400).json({ message: 'Error Occurred.. Please try Again' });
+        return res.status(400).json({result: "Error", message: 'Error Occurred.. Please try Again' });
     }
 }
 
@@ -31,7 +31,7 @@ const toggleRetweetforSpecificTweet = async (req, res) => {
     const tweet = await Tweet.findById(req.body.tweetId);
 
     if (tweet==null || tweet.length == 0) {
-      return res.status(400).json({ message: 'Tweet does not exist' });
+      return res.status(400).json({result: "Error", message: 'Tweet does not exist' });
     }
     const isReTweeted = tweet.retweet.indexOf(req.body.userId);
 
@@ -42,9 +42,9 @@ const toggleRetweetforSpecificTweet = async (req, res) => {
     }
 
     await tweet.save();
-    return res.status(200).json({message: "Retweets for tweet updated successfully", retweets: tweet.retweet.length});
+    return res.status(200).json({result: "Success", message: "Retweets for tweet updated successfully", retweets: tweet.retweet.length});
   } catch (err) {
-      return res.status(400).json({ message: 'Error Occurred.. Please try Again' });
+      return res.status(400).json({result: "Error", message: 'Error Occurred.. Please try Again' });
   }
 }
 
@@ -57,11 +57,11 @@ const followUser = async (req, res) => {
   const user = await User.findById(followUserId);
 
   if (!user || user == null || user.length == 0) {
-    return res.status(400).json({ message: 'User does not exist' });
+    return res.status(400).json({result: "Error", message: 'User does not exist' });
   }
 
   if (user.followers.indexOf(myUserId) !== -1) {
-    return res.status(200).json({ message: `You already follow ${user.name}` });
+    return res.status(200).json({result: "Success", message: `You already follow ${user.name}` });
   }
   user.followers.push(myUserId);
   await user.save();
@@ -72,7 +72,7 @@ const followUser = async (req, res) => {
   me.follows.push(followUserId);
   await me.save()
 
-  return res.status(200).json({message: `You are now following ${user.name}`});
+  return res.status(200).json({result: "Success", message: `You are now following ${user.name}`});
 }
 
 const unfollowUser = async (req, res) => {
@@ -83,12 +83,12 @@ const unfollowUser = async (req, res) => {
   const user = await User.findById(unfollowUserId);
 
   if (!user || user == null || user.length == 0) {
-    return res.status(400).json({ message: 'User does not exist' });
+    return res.status(400).json({result: "Error", message: 'User does not exist' });
   }
 
   const isfollowed = user.followers.indexOf(myUserId);
   if (isfollowed === -1) {
-    return res.status(400).json({ message: `You don't follow ${user.name}` });
+    return res.status(400).json({result: "Error", message: `You don't follow ${user.name}` });
   }
   user.followers.splice(isfollowed,1);
   await user.save();
@@ -100,7 +100,7 @@ const unfollowUser = async (req, res) => {
   me.follows.splice(isfollows,1);
   await me.save();
 
-  return res.status(200).json({message: `You unfollowed ${user.name}`});
+  return res.status(200).json({result: "Success", message: `You unfollowed ${user.name}`});
 }
 
 const fetchMyfeed = async (req, res) => {

@@ -13,28 +13,28 @@ const postNewtweet = (req, res) => {
 const getSpecificTweet = (req, res)=>{
   Tweet.findOne({_id:req.params.id}, (err, tweet) => { 
     if(err){
-      res.status(400).json({message: "Error Occurred. Please Try Again"});
+      res.status(400).json({result: "Error", message: "Error Occurred. Please Try Again"});
     } else{
-      res.status(200).json({tweet: tweet, message: "Tweet fectched successfully" });
+      res.status(200).json({result: "Success", tweet: tweet, message: "Tweet fectched successfully" });
     }
   });
 };
 
 const updateTweet = (req, res) => {
   Tweet.updateOne({ _id: req.params.id }, { $set: req.body }, (err) =>
-    !err ? res.status(200).json({message: "Tweet updated successfully" }) : res.status(400).json({message: "Error Occurred. Please Try Again"})
+    !err ? res.status(200).json({result: "Success", message: "Tweet updated successfully" }) : res.status(400).json({message: "Error Occurred. Please Try Again"})
   );
 };
 
 const fetchAlltweetsBySpecificUser = (req,res) => {
   Tweet.find({userId: req.params.userId}, (err, tweets) => {
     if(err){
-      return res.status(400).json({message: "Error Occurred. Please Try Again"});
+      return res.status(400).json({result: "Error", message: "Error Occurred. Please Try Again"});
     } else{
       if(tweets==null || tweets.length == 0){
-        return res.status(200).json({message: `No Tweets were posted by ${req.param.userId}` });
+        return res.status(200).json({result: "Success", message: `No Tweets were posted by ${req.param.userId}` });
       }else {
-        return res.status(200).json({tweets: tweets, message: "Tweets fectched successfully" });
+        return res.status(200).json({result: "Success", tweets: tweets, message: "Tweets fectched successfully" });
       }
     }
   });

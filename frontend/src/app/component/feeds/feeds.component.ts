@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { DataService } from 'src/app/data-service.service';
 
@@ -22,7 +22,9 @@ export class FeedsComponent implements OnInit {
     this.fetchUserFeed();
   }
 
+  @HostListener("document: newUserfollowed")
   fetchUserFeed(){
+    this.tweets = [];
     this.APISer.fetchUserFeed(this.user['_id']).subscribe(
       (res: any) =>{
         if(res.result == "Success"){
@@ -31,6 +33,8 @@ export class FeedsComponent implements OnInit {
             this.message = res.message;
             return;
           }
+          this.isMessageTobeShown = false;
+          this.message = "";
           res.tweets.forEach((element: any) => {
             this.tweets.push({
                 name: element.userId.name,

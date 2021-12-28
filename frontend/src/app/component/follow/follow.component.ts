@@ -45,13 +45,32 @@ export class FollowComponent implements OnInit {
         }
         this.hideError();
       }
-    )
-    
+    );
   }
 
   followUser(index: number){
-
-  }
+    this.APISer.followUser(this.user._id, this.users[index]['_id']).subscribe(
+      (res: any) => {
+        if(res.result == "Success") {
+         this.users.splice(index,1);
+         alert(res.message);
+         document.dispatchEvent(new Event("newUserfollowed"));
+        }else {
+          alert(res.message);
+        }
+      }, 
+      (err) => {
+        if(err.error.result == "Error"){
+          this.isErrorToBeShown = true;
+          this.error = err.error.message;
+        } else{
+          this.isErrorToBeShown = true;
+          this.error = "Error Occurred while following user.";
+        }
+        this.hideError();
+      }
+    )
+} 
 
   hideError(){
     setTimeout(()=>{
