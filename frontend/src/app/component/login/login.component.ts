@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    if(!this.loginForm.valid){
+      alert("Please Enter Correct Details");
+      return;
+    }
     this.error = "";
     this.APISer.loginUser(this.username, this.password).subscribe(
       (res: any) => {

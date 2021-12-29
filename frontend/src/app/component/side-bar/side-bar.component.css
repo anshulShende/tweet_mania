@@ -1,7 +1,7 @@
 .sidebar {
   border-right: 1px solid var(--tweet-mania-background);
   flex: 0.2;
-  width: 230px;
+  width: 260px;
   margin-top: 20px;
   padding-left: 15px;
   padding-right: 15px;
@@ -18,7 +18,7 @@
 }
 
 .sidebarOption h2 {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 18px;
   margin-right: 8px;
 }

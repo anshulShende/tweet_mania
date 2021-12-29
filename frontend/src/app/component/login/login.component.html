@@ -2,14 +2,14 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login()">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
         <div class="form-row">
             <div class="form-group text-center">
                 <h3>Log in to Tweet-Mania</h3>
             </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-12 offset-md-2 col-md-8">
+          <div class="form-group col-12 offset-md-4 col-md-4">
             <input
               type="text" 
               class="form-control"
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-12 offset-md-2 col-md-8">
+          <div class="form-group col-12 offset-md-4 col-md-4">
             <input
               id="password"
               name="password"
@@ -35,18 +35,18 @@
             />
           </div>
         </div>
-        <div class='form-row'>
-          <div class="form-group col-12 offset-md-2 col-md-8">
-            <button type="submit" class="btn btn-theme w-100">Log in</button>
-          </div>
-        </div>
         <ng-container class="form-row" *ngIf="isErrorToBeShown">
-          <div class="form-group col-12 offset-md-2 col-md-8 alert alert-danger"  role="alert">
+          <div class="form-group col-12 offset-md-4 col-md-4 alert alert-danger p-1 text-center"  role="alert">
               {{ error }}
           </div>
         </ng-container>
         <div class='form-row'>
-          <div class='form-group text-center col-12 offset-md-2 col-md-8'>
+          <div class="form-group col-12 offset-md-4 col-md-4">
+            <button type="submit" class="btn btn-theme w-100">Log in</button>
+          </div>
+        </div>
+        <div class='form-row'>
+          <div class='form-group text-center col-12 offset-md-4 col-md-4'>
             <a href='#'>Forgot password?</a> &nbsp; &nbsp;
             <a href='#' [routerLink]="['/signup']">Sign up for Tweet-Mania</a>
           </div>

@@ -14,7 +14,7 @@
                 class="form-control"
                 id="name"
                 name="name"
-                placeholder="name *"
+                placeholder="Name *"
                 [(ngModel)]="name"
                 maxlength="32"
                 [required]="true"
@@ -40,7 +40,7 @@
                 name="email"
                 type="text" 
                 class="form-control" 
-                placeholder="email *"
+                placeholder="Email Id *"
                 [(ngModel)]="email" 
                 [required]="true"
               />
@@ -51,7 +51,7 @@
                   name="bio"
                   type="text" 
                   class="form-control" 
-                  placeholder="bio"
+                  placeholder="Bio"
                   [(ngModel)]="bio" 
                   maxlength="180"
                 />
@@ -81,18 +81,19 @@
             />
           </div>
         </div>
-        <div class='row'>
-          <div class="form-group col-12 offset-md-2 col-md-8">
-            <button type="submit" class="btn btn-theme w-100">Sign Up</button>
-          </div>
-        </div>
-        <div class="row mt-2" *ngIf="isErrorToBeShown">
-          <div class="form-group col-12 offset-md-2 col-md-8 alert alert-danger"  role="alert">
+        <div class="row" *ngIf="isErrorToBeShown">
+          <div class="form-group col-12 offset-md-3 col-md-6 alert alert-danger p-1 text-center"  role="alert">
               {{ error }}
           </div>
         </div>
         <div class='row'>
-          <div class='form-group text-center col-12 offset-md-2 col-md-8'>
+          <div class="form-group col-12 offset-md-4 col-md-4">
+            <button type="submit" class="btn btn-theme w-100">Sign Up</button>
+          </div>
+        </div>
+        
+        <div class='row'>
+          <div class='form-group text-center col-12 offset-md-4 col-md-4'>
             <a href='#' [routerLink]="['/login']">Already a registered User</a>
           </div>
         </div>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
+import { DataService } from 'src/app/data-service.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,10 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  user: any = {};
+  constructor(private router: Router, private APISer: ApiService, private DataSer: DataService) { }
 
   ngOnInit(): void {
+    this.user = this.DataSer.get("User");
   }
 
   loadPage(page: string){
@@ -22,8 +25,25 @@ export class SideBarComponent implements OnInit {
     
   }
 
+  @HostListener("document: logout")
   logout(){
-    this.router.navigate(["/login"]);
+    let text = "Are you sure you want to Logout?";
+    if(confirm(text)==true){
+      this.APISer.logout(this.user['_id']).subscribe(
+        (res: any) => {
+          if(res.result == "Success"){
+            this.router.navigate(["/login"]);
+          }
+        }, (err) => {
+          alert(err.error.message);
+          this.router.navigate(["/login"]);
+        }
+      );
+      
+    }else{
+      return;
+    }
+    
   }
 
 }
