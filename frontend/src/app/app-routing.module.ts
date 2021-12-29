@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExploreComponent } from './component/explore/explore.component';
 import { HomeChildComponent } from './component/home-child/home-child.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
@@ -20,14 +21,27 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: '',
+        path: 'feed',
         component: HomeChildComponent,
       },
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'explore',
+        component: ExploreComponent,
+      },
+      {
+        path: '**', 
+        redirectTo: 'feed',
+        pathMatch: 'prefix'
       }
     ]
+  },
+  { 
+    path: '**', 
+    redirectTo: '/login',
   },
   { 
     path: '', 

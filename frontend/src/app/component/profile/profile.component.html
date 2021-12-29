@@ -1,1 +1,37 @@
-<p>profile works!</p>
+<div class="wrapper">
+    <div class="profile-card js-profile-card">
+      <div class="profile-card__img">
+        <img src="../../assets/images/{{ user.profileImage }}" alt="profile card">
+      </div>
+  
+      <div class="profile-card__cnt js-profile-cnt">
+        <div class="profile-card__name">{{ user.name }}</div>
+        <div class="profile-card__txt">{{ user.bio }}</div>
+        <div class="profile-card-inf">
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{ followers }}</div>
+            <div class="profile-card-inf__txt">Followers</div>
+          </div>
+  
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{ following }}</div>
+            <div class="profile-card-inf__txt">Following</div>
+          </div>
+  
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">{{ tweetCount }}</div>
+            <div class="profile-card-inf__txt">Tweets</div>
+          </div>
+  
+          <!-- <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">85</div>
+            <div class="profile-card-inf__txt">Works</div>
+          </div> -->
+        </div>
+    </div>
+    
+    <app-feeds *ngIf="isFeedtobeLoaded"></app-feeds>
+  </div>
+
+  
+  

@@ -15,6 +15,7 @@ export class ApiService {
   private SEARCH_FOLLOWERS = this.BASE_URL + "feed/searchFollowers";
   private FOllOW_USER = this.BASE_URL + "feed/follow";
   private LOGOUT = this.BASE_URL + "auth/logout";
+  private FETCH_USER_PROFILE = this.BASE_URL + "users/fetchUserProfile";
 
   headers = new HttpHeaders({'Content-Type': 'application/json' });
   options = { headers: this.headers }
@@ -59,5 +60,9 @@ export class ApiService {
 
   logout(userId: string){
     return this.http.patch(`${this.LOGOUT}/${userId}`, null);
+  }
+
+  fetchUserProfile(userId: string){
+    return this.http.get(`${this.FETCH_USER_PROFILE}/${userId}`);
   }
 }

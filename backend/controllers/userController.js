@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Tweet = require('../models/tweetModel');
 
 const getAllUsers = (req, res) => {
   User.find({}, (err, user) => {
@@ -44,4 +45,40 @@ const updateUser = (req, res) => {
   );
 };
 
-module.exports = { getAllUsers, getSpecificUser, deleteSpecificUser, updateUser };
+const fetchUserProfile = async(req,res) => {
+  const userId = req.params.userId;
+  console.log(userId);
+
+  try{
+    const user = await User.findById(userId);
+    if(!user || user == null || user.length == 0){
+      return res.status(400).json({result: "Error", message: 'User does not exist' });
+    }
+
+    if(!user.isLoggedIn){
+      return res.status(401).json({result: "Error", message: "Please Login to fetch your Profile details"});
+    }
+    console.log("here")
+    //const tweets = await Tweet.find({'userId':  { $eq: req.params.userId } }).populate('userId').exec();
+    const tweets = await Tweet.find({userId : req.params.userId });
+    console.log(tweets);
+    if(tweets==null || tweets.length == 0 ){
+      return res.status(200).json({result: "Success",user: user, tweets: [], message: "Now is the time to be a maniac. Start tweeting..."});
+    }
+    
+    if(tweets.length > 1){
+       tweets.sort((a, b) => {
+          let ca = new Date(a.createdAt),
+          cb = new Date(b.createdAt);
+          return cb-ca;
+        });
+    }
+
+    return res.status(200).json({result: "Success", user: user, tweets: tweets, message: `Successfullly fetched Feed for ${user.name}`});
+  } catch(err) {
+    return res.status(400).json({result: "Error", message: `Error Occurred while fetching profile for ${userId}`});
+  }
+
+}
+
+module.exports = { getAllUsers, getSpecificUser, deleteSpecificUser, updateUser, fetchUserProfile };

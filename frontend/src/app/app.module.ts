@@ -16,6 +16,7 @@ import { FeedsComponent } from './component/feeds/feeds.component';
 import { HomeChildComponent } from './component/home-child/home-child.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { FollowComponent } from './component/follow/follow.component';
+import { ExploreComponent } from './component/explore/explore.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FollowComponent } from './component/follow/follow.component';
     FeedsComponent,
     HomeChildComponent,
     ProfileComponent,
-    FollowComponent
+    FollowComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,

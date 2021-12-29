@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { DataService } from 'src/app/data-service.service';
 
@@ -13,13 +14,18 @@ export class FeedsComponent implements OnInit {
   isMessageTobeShown: boolean = false;
   message: string = "";
 
-  constructor(private DataSer: DataService, private APISer: ApiService) {
+  constructor(private DataSer: DataService, private APISer: ApiService, private router: Router) {
     this.tweets = [];
   }
 
   ngOnInit(): void {
     this.user = this.DataSer.get("User");
-    this.fetchUserFeed();
+    if(this.router.url =="/home/feed"){
+      this.fetchUserFeed();
+    } else if(this.router.url =="/home/profile"){
+      this.loadUserProfile();
+    }
+    
   }
 
   @HostListener("document: newUserfollowed")
@@ -57,4 +63,10 @@ export class FeedsComponent implements OnInit {
     )
   }
 
+  loadUserProfile(){
+    this.DataSer.get("isMessageTobeShown");
+    this.DataSer.get("message");
+    this.user = this.DataSer.get("User");
+    this.tweets = this.DataSer.get("Tweets");
+  }
 }

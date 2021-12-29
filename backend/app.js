@@ -18,7 +18,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')));
+app.use(express.static(path.join(__dirname, 'public/frontend')));
 
 db.once('open', ()=>{
     console.log('Connected to Mongo DB Atlas');

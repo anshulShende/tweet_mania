@@ -18,9 +18,11 @@ export class SideBarComponent implements OnInit {
 
   loadPage(page: string){
     if(page == 'home'){
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/home/feed"]);
     } else if(page == 'profile'){
       this.router.navigate(['home/profile']);
+    } else if(page == 'explore'){
+      this.router.navigate(['home/explore']);
     }
     
   }
